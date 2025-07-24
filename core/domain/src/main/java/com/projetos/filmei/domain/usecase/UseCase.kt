@@ -1,6 +1,7 @@
-package com.projetos.filmei.data.result
+package com.projetos.filmei.domain.usecase
 
-import com.projetos.filmei.data.model.ErrorMessage
+import com.projetos.filmei.domain.model.ErrorMessage
+import com.projetos.filmei.domain.result.OutCome
 
 interface UseCase<R> {
     suspend fun onSuccess(success: OutCome.Success<R>)

@@ -10,6 +10,15 @@ object Dependencies {
     const val ANDROIDX_MATERIAL3 = "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL3}"
     const val ANDROIDX_WORK_RUNTIME = "androidx.work:work-runtime-ktx:${DependenciesVersions.WORK_RUNTIME}"
     const val ANDROIDX_COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${DependenciesVersions.COMPOSE_RUNTIME}"
+    const val APPCOMPAT = "androidx.appcompat:appcompat:${DependenciesVersions.APPCOMPAT}"
+    const val ANDROID_MATERIAL = "com.google.android.material:material:${DependenciesVersions.MATERIAL}"
+    const val ANDROIDX_ACTIVITY = "androidx.activity:activity-ktx:${DependenciesVersions.ANDROIDX_ACTIVITY}"
+
+    const val COMPOSE_MATERIAL =
+        "androidx.compose.material:material:${DependenciesVersions.COMPOSE_MATERIAL}"
+    const val COMPOSE_COMPILER =
+        "androidx.compose.compiler:compiler:${DependenciesVersions.COMPOSE_COMPILER}"
+    const val LIFECYCLE_COMPOSE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-compose:${DependenciesVersions.LIFECYCLE_COMPOSE_RUNTIME}"
 
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
     const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${DependenciesVersions.HILT}"

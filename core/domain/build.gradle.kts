@@ -1,3 +1,5 @@
+import deps.Dependencies
+import deps.implementation
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
@@ -12,4 +14,5 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.ANDROIDX_COMPOSE_RUNTIME)
 }

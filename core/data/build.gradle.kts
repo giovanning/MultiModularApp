@@ -2,6 +2,7 @@ import deps.androidTestDependencies
 import deps.chucker
 import deps.dataStoreModule
 import deps.debugTestDependencies
+import deps.domainModule
 import deps.hilt
 import deps.okHttp
 import deps.protoDataStoreModule
@@ -24,6 +25,7 @@ dependencies {
     retrofit()
     dataStoreModule()
     protoDataStoreModule()
+    domainModule()
     chucker()
     hilt()
     testDependencies()

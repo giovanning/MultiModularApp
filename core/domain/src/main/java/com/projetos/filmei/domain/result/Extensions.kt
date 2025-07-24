@@ -1,4 +1,4 @@
-package com.projetos.filmei.data.result
+package com.projetos.filmei.domain.result
 
 import kotlinx.coroutines.isActive
 import kotlin.coroutines.coroutineContext

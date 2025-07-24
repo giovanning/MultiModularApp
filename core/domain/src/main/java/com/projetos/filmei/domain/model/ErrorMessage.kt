@@ -1,4 +1,4 @@
-package com.projetos.filmei.data.model
+package com.projetos.filmei.domain.model
 
 data class ErrorMessage(
     val code: Int,

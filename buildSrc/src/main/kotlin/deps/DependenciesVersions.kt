@@ -13,6 +13,13 @@ object DependenciesVersions {
     const val MATERIAL3 = "1.2.1"
     const val WORK_RUNTIME = "2.7.1"
     const val COMPOSE_RUNTIME = "1.6.0"
+    const val APPCOMPAT = "1.7.0"
+    const val MATERIAL = "1.12.0"
+    const val ANDROIDX_ACTIVITY = "1.9.1"
+    const val COMPOSE_MATERIAL = "1.6.8"
+    const val COMPOSE_COMPILER = "1.5.15"
+    const val LIFECYCLE_COMPOSE_RUNTIME = "2.6.2"
+
     const val KSP = "2.0.0-1.0.24"
 
     const val RETROFIT = "2.11.0"

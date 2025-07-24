@@ -5,15 +5,15 @@ import com.google.gson.Gson
 import com.projetos.filmei.data.constants.HEADER_LOCATION
 import com.projetos.filmei.data.error.getDefaultErrorResponse
 import com.projetos.filmei.data.error.getErrorResponse
-import com.projetos.filmei.data.error.toDomain
 import com.projetos.filmei.data.interceptors.NoConnectivityException
+import com.projetos.filmei.data.mapper.toDomain
 import com.projetos.filmei.data.response.ErrorResponse
-import com.projetos.filmei.data.result.OutCome
 import com.projetos.filmei.data.source.DataSource.Companion.NO_INTERNET
 import com.projetos.filmei.data.source.DataSource.Companion.SEE_OTHERS
 import com.projetos.filmei.data.source.DataSource.Companion.SSL_PINNING
 import com.projetos.filmei.data.source.DataSource.Companion.TIMEOUT
 import com.projetos.filmei.data.source.DataSource.Companion.UNKNOWN
+import com.projetos.filmei.domain.result.OutCome
 import kotlinx.coroutines.isActive
 import retrofit2.Response
 import java.net.SocketTimeoutException
@@ -53,6 +53,7 @@ class NetworkDataSource<SERVICE>(
                         onEmpty()
                     }
                 }
+
                 responseCode == SEE_OTHERS -> {
                     val location = response.headers()[HEADER_LOCATION]
                     if (location != null) {
@@ -61,6 +62,7 @@ class NetworkDataSource<SERVICE>(
                         onError(getDefaultErrorResponse(), responseCode)
                     }
                 }
+
                 else -> {
                     val errorBody = response.errorBody()?.string()
                     if (errorBody.isNullOrBlank()) {

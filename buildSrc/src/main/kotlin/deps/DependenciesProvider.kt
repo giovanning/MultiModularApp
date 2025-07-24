@@ -43,6 +43,12 @@ fun DependencyHandler.androidX() {
     implementation(Dependencies.ANDROIDX_MATERIAL3)
     implementation(Dependencies.ANDROIDX_WORK_RUNTIME)
     implementation(Dependencies.ANDROIDX_COMPOSE_RUNTIME)
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.ANDROID_MATERIAL)
+    implementation(Dependencies.ANDROIDX_ACTIVITY)
+    implementation(Dependencies.COMPOSE_MATERIAL)
+    implementation(Dependencies.COMPOSE_COMPILER)
+    implementation(Dependencies.LIFECYCLE_COMPOSE_RUNTIME)
 }
 
 fun DependencyHandler.room() {

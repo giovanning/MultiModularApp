@@ -1,6 +1,7 @@
-package com.projetos.filmei.data.result
+package com.projetos.filmei.domain.result
 
-import com.projetos.filmei.data.model.ErrorMessage
+import com.projetos.filmei.domain.model.ErrorMessage
+import com.projetos.filmei.domain.usecase.UseCase
 
 sealed class OutCome<T> {
 
