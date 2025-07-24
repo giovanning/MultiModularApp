@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>FunctionMaxLength:CoroutineModule.kt$CoroutineModule$@Provides @Singleton @Named(DISPATCHER_DEFAULT_TAG) fun provideDefaultCoroutineDispatcher(): CoroutineDispatcher</ID>
+    <ID>FunctionMaxLength:CoroutineModule.kt$CoroutineModule$@Provides @Singleton @Named(DISPATCHER_MAIN_TAG) fun providerMainCoroutineDispatcher(): CoroutineDispatcher</ID>
+    <ID>FunctionMaxLength:InterceptorModule.kt$InterceptorModule$@Provides @Singleton @Named(AUTHENTICATION_INTERCEPTOR_TAG) fun provideAutheticationInterceptor( sessionDataStoreInterface: SessionDataStoreInterface, sessionService: SessionService, @Named(DISPATCHER_IO_TAG) coroutinerDispatcher: CoroutineDispatcher, ): Interceptor</ID>
+    <ID>FunctionMaxLength:InterceptorModule.kt$InterceptorModule$@Provides @Singleton @Named(LOGGING_INTERCEPTOR_TAG) fun provideOkHttpLoggingInterceptor(): Interceptor</ID>
+    <ID>FunctionMaxLength:NetworkModule.kt$NetworkModule$@Provides @Singleton fun providerNetworkMonitorInterface(context: Context): NetworkMonitorInterface</ID>
+  </CurrentIssues>
+</SmellBaseline>

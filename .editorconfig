@@ -1,0 +1,4 @@
+[*.{kt,kts}]
+ktlint_function_signature_body_expression_wrapping = always
+
+ktlint_standard = enabled
