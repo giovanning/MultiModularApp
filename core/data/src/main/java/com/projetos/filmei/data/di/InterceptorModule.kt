@@ -5,10 +5,11 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.projetos.filmei.data.BuildConfig
-import com.projetos.filmei.data.constants.ACCESS_TOKEN_TAG
+import com.projetos.filmei.data.connectivity.NetworkMonitorInterface
 import com.projetos.filmei.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.CHUCKER_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.CLIENT_ID_TAG
+import com.projetos.filmei.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.DISPATCHER_IO_TAG
 import com.projetos.filmei.data.constants.HEADER_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.LANGUAGE_TAG
@@ -16,8 +17,8 @@ import com.projetos.filmei.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.projetos.filmei.data.interceptors.AUTHORIZATION_HEADER
 import com.projetos.filmei.data.interceptors.AuthenticationInterceptor
 import com.projetos.filmei.data.interceptors.CLIENT_ID_HEADER
+import com.projetos.filmei.data.interceptors.ConnectivityInterceptor
 import com.projetos.filmei.data.interceptors.HeaderInterceptor
-import com.projetos.filmei.data.session.SessionService
 import com.projetos.filmei.protodatastore.manager.session.SessionDataStoreInterface
 import dagger.Module
 import dagger.Provides
@@ -40,12 +41,10 @@ class InterceptorModule {
     @Named(HEADER_INTERCEPTOR_TAG)
     fun provideHeaderInterceptor(
         @Named(CLIENT_ID_TAG) clientId: String,
-        @Named(ACCESS_TOKEN_TAG) accessToken: () -> String?,
         @Named(LANGUAGE_TAG) language: () -> Locale,
     ): Interceptor {
         return HeaderInterceptor(
             clientId = clientId,
-            accessTokenProvider = accessToken,
             languageProvider = language,
         )
     }
@@ -55,12 +54,10 @@ class InterceptorModule {
     @Named(AUTHENTICATION_INTERCEPTOR_TAG)
     fun provideAutheticationInterceptor(
         sessionDataStoreInterface: SessionDataStoreInterface,
-        sessionService: SessionService,
         @Named(DISPATCHER_IO_TAG) coroutinerDispatcher: CoroutineDispatcher,
     ): Interceptor {
         return AuthenticationInterceptor(
             sessionDataStoreInterface,
-            sessionService,
             coroutinerDispatcher,
         )
     }
@@ -88,6 +85,13 @@ class InterceptorModule {
             // Controls Android shortcut creation.
             .createShortcut(true)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    @Named(CONNECTIVITY_INTERCEPTOR_TAG)
+    fun provideConnectivityInterceptor(networkMonitorInterface: NetworkMonitorInterface): Interceptor {
+        return ConnectivityInterceptor(networkMonitorInterface)
     }
 
     @Provides

@@ -16,9 +16,11 @@ import javax.inject.Inject
 
 class AuthenticationInterceptor @Inject constructor(
     private val sessionDataStoreInterface: SessionDataStoreInterface,
-    private val sessionService: SessionService,
     private val coroutineDispatcher: CoroutineDispatcher,
 ) : Interceptor {
+
+    @Inject
+    lateinit var sessionService: SessionService
 
     private val mutex = Mutex()
 
@@ -28,7 +30,7 @@ class AuthenticationInterceptor @Inject constructor(
             runBlocking(coroutineDispatcher) { sessionDataStoreInterface.getAccessToken() }
 
         val authenticatedRequest =
-            request.newBuilder().header(AUTHORIZATION_HEADER, "Bearer $accessToken").build()
+            request.newBuilder().header(AUTHORIZATION_HEADER, "$BEARER $accessToken").build()
 
         val response = chain.proceed(authenticatedRequest)
 

@@ -9,6 +9,7 @@ import com.projetos.filmei.data.connectivity.NetworkMonitorInterface
 import com.projetos.filmei.data.connectivity.NetworkMonitorInterfaceImpl
 import com.projetos.filmei.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.CHUCKER_INTERCEPTOR_TAG
+import com.projetos.filmei.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.HEADER_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.projetos.filmei.data.factory.ServiceFactory
@@ -54,6 +55,7 @@ class NetworkModule {
         @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
         @Named(CHUCKER_INTERCEPTOR_TAG) chuckerInterceptor: Interceptor,
         @Named(AUTHENTICATION_INTERCEPTOR_TAG) authenticationInterceptor: Interceptor,
+        @Named(CONNECTIVITY_INTERCEPTOR_TAG) connectivityInterceptor: Interceptor,
         okHttpClientProvider: OkHttpClientProviderInterface,
     ): OkHttpClient {
         return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFICATE)
@@ -61,6 +63,7 @@ class NetworkModule {
             .addInterceptor(headerInterceptor)
             .addInterceptor(chuckerInterceptor)
             .addInterceptor(authenticationInterceptor)
+            .addInterceptor(connectivityInterceptor)
             .retryOnConnectionFailure(true)
             .followRedirects(false)
             .followSslRedirects(false)

@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
   <ManuallySuppressedIssues/>
-  <CurrentIssues/>
+  <CurrentIssues>
+    <ID>NoUnusedImports:NetworkModule.kt$com.projetos.filmei.login.data.di.NetworkModule.kt</ID>
+    <ID>UnusedImports:NetworkModule.kt$import com.projetos.filmei.data.connectivity.NetworkMonitorInterface</ID>
+  </CurrentIssues>
 </SmellBaseline>

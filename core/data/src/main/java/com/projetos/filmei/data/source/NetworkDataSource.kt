@@ -2,11 +2,11 @@ package com.projetos.filmei.data.source
 
 import android.util.Log
 import com.google.gson.Gson
-import com.projetos.filmei.data.connectivity.NetworkMonitorInterface
 import com.projetos.filmei.data.constants.HEADER_LOCATION
 import com.projetos.filmei.data.error.getDefaultErrorResponse
 import com.projetos.filmei.data.error.getErrorResponse
 import com.projetos.filmei.data.error.toDomain
+import com.projetos.filmei.data.interceptors.NoConnectivityException
 import com.projetos.filmei.data.response.ErrorResponse
 import com.projetos.filmei.data.result.OutCome
 import com.projetos.filmei.data.source.DataSource.Companion.NO_INTERNET
@@ -25,7 +25,6 @@ import kotlin.coroutines.coroutineContext
 class NetworkDataSource<SERVICE>(
     private val service: SERVICE,
     private val gson: Gson,
-    private val networkMonitorInterface: NetworkMonitorInterface,
     private val userIdProvider: () -> String,
 ) {
     suspend fun <R, T> performRequest(
@@ -37,10 +36,6 @@ class NetworkDataSource<SERVICE>(
             OutCome.error(errorResponse.toDomain(code))
         },
     ): OutCome<T> {
-        if (!networkMonitorInterface.hasConnectivity()) {
-            return onError(getDefaultErrorResponse(), NO_INTERNET)
-        }
-
         return try {
             val response = service.request(userIdProvider())
             val responseCode = response.code()
@@ -86,7 +81,7 @@ class NetworkDataSource<SERVICE>(
     ): OutCome<T> {
         val errorCode = when (e) {
             is SocketTimeoutException -> TIMEOUT
-            is UnknownHostException -> NO_INTERNET
+            is UnknownHostException, NoConnectivityException -> NO_INTERNET
             is SSLPeerUnverifiedException, is SSLHandshakeException -> SSL_PINNING
             else -> UNKNOWN
         }
