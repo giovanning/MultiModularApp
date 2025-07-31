@@ -4,6 +4,7 @@ import deps.dataStoreModule
 import deps.debugTestDependencies
 import deps.domainModule
 import deps.hilt
+import deps.kotlinX
 import deps.okHttp
 import deps.protoDataStoreModule
 import deps.retrofit
@@ -24,6 +25,7 @@ dependencies {
     okHttp()
     retrofit()
     dataStoreModule()
+    kotlinX()
     protoDataStoreModule()
     domainModule()
     chucker()

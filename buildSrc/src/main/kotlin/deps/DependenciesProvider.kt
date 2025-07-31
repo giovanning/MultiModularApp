@@ -13,6 +13,10 @@ fun DependencyHandler.homeModule() {
     moduleImplementation(project(":features:home"))
 }
 
+fun DependencyHandler.signUpModule() {
+    moduleImplementation(project(":features:signup"))
+}
+
 fun DependencyHandler.dataModule() {
     moduleImplementation(project(":core:data"))
 }
@@ -25,12 +29,20 @@ fun DependencyHandler.presentationModule() {
     moduleImplementation(project(":core:presentation"))
 }
 
+fun DependencyHandler.paymentModule() {
+    moduleImplementation(project(":core:payment"))
+}
+
 fun DependencyHandler.dataStoreModule() {
     moduleImplementation(project(":core:datastore"))
 }
 
 fun DependencyHandler.protoDataStoreModule() {
     moduleImplementation(project(":core:protodatastore"))
+}
+
+fun DependencyHandler.navigatorModule() {
+    moduleImplementation(project(":core:navigator"))
 }
 
 fun DependencyHandler.androidX() {
@@ -49,6 +61,10 @@ fun DependencyHandler.androidX() {
     implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.COMPOSE_COMPILER)
     implementation(Dependencies.LIFECYCLE_COMPOSE_RUNTIME)
+    implementation(Dependencies.navigation)
+    implementation(Dependencies.navigation2)
+    implementation(Dependencies.navigationFragmentKtx)
+    implementation(Dependencies.googleJson)
 }
 
 fun DependencyHandler.room() {
@@ -60,6 +76,9 @@ fun DependencyHandler.room() {
 fun DependencyHandler.dataStore() {
     implementation(Dependencies.DATA_STORE)
     implementation(Dependencies.KOTLIN_COLLECTIONS)
+}
+
+fun DependencyHandler.kotlinX() {
     implementation(Dependencies.KOTLIN_SERIALIZATION)
 }
 

@@ -1,7 +1,7 @@
 package com.projetos.filmei.login.domain.mapper
 
+import com.projetos.filmei.domain.model.User
 import com.projetos.filmei.login.data.response.UserResponse
-import com.projetos.filmei.login.domain.model.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 

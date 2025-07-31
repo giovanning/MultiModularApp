@@ -5,6 +5,8 @@ import deps.dataModule
 import deps.debugTestDependencies
 import deps.domainModule
 import deps.hilt
+import deps.navigatorModule
+import deps.presentationModule
 import deps.retrofit
 import deps.room
 import deps.testDependencies
@@ -35,6 +37,8 @@ dependencies {
     retrofit()
     dataModule()
     domainModule()
+    navigatorModule()
+    presentationModule()
     room()
     testDependencies()
     androidTestDependencies()

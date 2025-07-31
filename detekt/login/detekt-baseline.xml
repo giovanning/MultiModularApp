@@ -2,10 +2,6 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>NoBlankLineBeforeRbrace:LoginViewModel.kt$LoginViewModel$ </ID>
-    <ID>NoConsecutiveBlankLines:LoginView.kt$ </ID>
-    <ID>NoEmptyFirstLineInMethodBlock:LoginViewModel.kt$LoginViewModel$ </ID>
-    <ID>NoTrailingSpaces:LoginViewModel.kt$LoginViewModel$ </ID>
-    <ID>SpacingAroundCurly:LoginViewModel.kt$LoginViewModel${</ID>
+    <ID>FunctionMaxLength:LoginValidator.kt$LoginValidator$private fun String.isAlphaNumericWithSpecialCharacters(): Boolean</ID>
   </CurrentIssues>
 </SmellBaseline>

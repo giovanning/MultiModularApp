@@ -16,22 +16,22 @@ sealed class LoginError : Error() {
     }
 
     // Incorrect Username
-    data object IncorrectUserName : LoginError() {
+    data object InCorrectUserName : LoginError() {
         override fun getErrorMessage(): Int = R.string.username_error
     }
 
     // Incorrect Password
-    data object IncorrectPassword : LoginError() {
+    data object InCorrectPassword : LoginError() {
         override fun getErrorMessage(): Int = R.string.password_error
     }
 
     // Incorrect Username length
-    data object IncorrectUsernameLength : LoginError() {
+    data object InCorrectUsernameLength : LoginError() {
         override fun getErrorMessage(): Int = R.string.username_length_error
     }
 
     // Incorrect Password length
-    data object IncorrectPasswordLength : LoginError() {
+    data object InCorrectPasswordLength : LoginError() {
         override fun getErrorMessage(): Int = R.string.password_length_error
     }
 }

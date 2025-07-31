@@ -1,36 +1,45 @@
+import deps.DependenciesVersions
+import deps.androidTestDependencies
+import deps.androidX
+import deps.dataModule
+import deps.debugTestDependencies
+import deps.domainModule
+import deps.hilt
+import deps.navigatorModule
+import deps.presentationModule
+import deps.retrofit
+import deps.room
+import deps.testDependencies
+import plugs.SharedLibraryGradlePlugin
+
 plugins {
-    id(plugs.BuildPlugins.KOTLIN_ANDROID)
-    id(plugs.BuildPlugins.ANDROID_APPLICATION)
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
+
+apply<SharedLibraryGradlePlugin>()
 
 android {
     namespace = "com.projetos.filmei.home"
-    compileSdk = 34
 
-    defaultConfig {
-        minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    composeOptions {
+        kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
     }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+    buildFeatures {
+        compose = true
     }
 }
 
 dependencies {
-
+    androidX()
+    retrofit()
+    dataModule()
+    domainModule()
+    navigatorModule()
+    presentationModule()
+    hilt()
+    room()
+    testDependencies()
+    androidTestDependencies()
+    debugTestDependencies()
 }

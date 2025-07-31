@@ -4,7 +4,6 @@ import android.content.Context
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.projetos.filmei.data.BuildConfig
-import com.projetos.filmei.data.OkHttpClientProvider
 import com.projetos.filmei.data.connectivity.NetworkMonitorInterface
 import com.projetos.filmei.data.connectivity.NetworkMonitorInterfaceImpl
 import com.projetos.filmei.data.constants.AUTHENTICATION_INTERCEPTOR_TAG
@@ -13,7 +12,9 @@ import com.projetos.filmei.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.HEADER_INTERCEPTOR_TAG
 import com.projetos.filmei.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.projetos.filmei.data.factory.ServiceFactory
+import com.projetos.filmei.data.okhttp.OkHttpClientProvider
 import com.projetos.filmei.data.okhttp.OkHttpClientProviderInterface
+import com.projetos.filmei.data.session.BASE_URL
 import com.projetos.filmei.data.session.SessionService
 import dagger.Module
 import dagger.Provides
@@ -22,6 +23,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -77,8 +79,9 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(okhttpClient: OkHttpClient): Retrofit {
         val builder = Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .client(okhttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
         return builder.build()
     }

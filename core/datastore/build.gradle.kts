@@ -1,6 +1,7 @@
 import deps.Dependencies
 import deps.dataStore
 import deps.implementation
+import deps.kotlinX
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
@@ -16,5 +17,6 @@ android {
 
 dependencies {
     dataStore()
+    kotlinX()
     implementation(Dependencies.ANDROIDX_COMPOSE_RUNTIME)
 }

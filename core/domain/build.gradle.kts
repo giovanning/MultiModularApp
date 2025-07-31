@@ -1,5 +1,6 @@
 import deps.Dependencies
 import deps.implementation
+import deps.kotlinX
 import plugs.SharedLibraryGradlePlugin
 
 plugins {
@@ -15,4 +16,5 @@ android {
 
 dependencies {
     implementation(Dependencies.ANDROIDX_COMPOSE_RUNTIME)
+    kotlinX()
 }

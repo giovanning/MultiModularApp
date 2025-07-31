@@ -1,7 +1,6 @@
 import build.BuildConfig
 import build.BuildCreator
 import build.BuildDimensions
-import deps.DependenciesVersions
 import deps.androidTestDependencies
 import deps.androidX
 import deps.dataModule
@@ -10,12 +9,15 @@ import deps.dataStoreModule
 import deps.debugTestDependencies
 import deps.domainModule
 import deps.hilt
+import deps.homeModule
 import deps.loginModule
+import deps.navigatorModule
 import deps.okHttp
 import deps.presentationModule
 import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
+import deps.signUpModule
 import deps.testDependencies
 import flavors.BuildFlavor
 import release.ReleaseConfig
@@ -95,13 +97,18 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
     dataModule()
     domainModule()
     presentationModule()
     loginModule()
+    homeModule()
+    signUpModule()
     dataStoreModule()
     protoDataStoreModule()
-
+    navigatorModule()
     dataStore()
     androidX()
     hilt()

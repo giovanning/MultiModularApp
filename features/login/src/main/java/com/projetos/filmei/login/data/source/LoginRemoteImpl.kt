@@ -2,11 +2,11 @@ package com.projetos.filmei.login.data.source
 
 import com.projetos.filmei.data.mapper.toDomain
 import com.projetos.filmei.data.source.NetworkDataSource
+import com.projetos.filmei.domain.model.User
 import com.projetos.filmei.domain.result.OutCome
 import com.projetos.filmei.login.data.request.LoginRequestBody
 import com.projetos.filmei.login.data.service.LoginService
 import com.projetos.filmei.login.domain.mapper.LoginMapper
-import com.projetos.filmei.login.domain.model.User
 
 class LoginRemoteImpl(
     private val networkDataSource: NetworkDataSource<LoginService>,
