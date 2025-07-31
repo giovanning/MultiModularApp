@@ -46,18 +46,18 @@ class RoutingActivity : ComponentActivity() {
 
                 when (event) {
                     is NavigatorEvent.Directions -> {
-                        appNavigator.navigate(
-                            destination = event.destination,
-                            builder = event.builder,
+                        navController.navigate(
+                            event.destination,
+                            event.builder,
                         )
                     }
 
                     NavigatorEvent.NavigateUp -> {
-                        appNavigator.navigateUp()
+                        navController.navigateUp()
                     }
 
                     NavigatorEvent.PopBackStack -> {
-                        appNavigator.popBackStack()
+                        navController.popBackStack()
                     }
                 }
             }
