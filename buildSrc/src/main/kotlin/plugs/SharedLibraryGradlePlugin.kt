@@ -10,6 +10,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import signing.BuildSigning
 import signing.SigningTypes
@@ -22,7 +23,7 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
         project.applyKotlinOptions()
     }
 
-    fun Project.addPluginConfigurations() {
+    private fun Project.addPluginConfigurations() {
         plugins.apply(BuildPlugins.KOTLIN_ANDROID)
         plugins.apply(BuildPlugins.KSP)
         plugins.apply(BuildPlugins.KOTLIN_COMPOSE)
@@ -31,7 +32,7 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
         plugins.apply(BuildPlugins.KOTLIN_SERIALIZATION)
     }
 
-    fun Project.addAndroidConfigurations() {
+    private fun Project.addAndroidConfigurations() {
         extensions.getByType(LibraryExtension::class.java).apply {
             compileSdk = BuildConfig.COMPILE_SDK_VERSION
             defaultConfig {
@@ -89,10 +90,10 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
         }
     }
 
-    fun Project.applyKotlinOptions() {
-        tasks.withType<KotlinCompile> {
-            kotlinOptions {
-                jvmTarget = "11"
+    private fun Project.applyKotlinOptions() {
+        tasks.withType<KotlinCompile>().configureEach {
+            compilerOptions {
+                jvmTarget.set(JvmTarget.JVM_11)
             }
         }
     }
